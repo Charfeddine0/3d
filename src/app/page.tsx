@@ -1,15 +1,12 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import ModelViewer from '@/components/ModelViewer';
 import Gallery, { type GalleryItem } from '@/components/Gallery';
 import {
   generate3D,
-  pollJob,
   downloadUrl,
   thumbnailUrl,
-  type JobStatus,
 } from '@/lib/api';
 
 // ============================================================
@@ -39,7 +36,6 @@ export default function Home() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [selectedGalleryId, setSelectedGalleryId] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const statusIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // ============================================================
   // Load gallery from localStorage
@@ -224,7 +220,6 @@ export default function Home() {
                 color: 'var(--text-primary)',
               }}
               disabled={status === 'processing' || status === 'pending'}
-              maxLength={500}
             />
 
             <button
@@ -262,7 +257,7 @@ export default function Home() {
           {/* Prompt length */}
           <div className="flex justify-between items-center">
             <span className="text-xs text-[var(--text-secondary)]">
-              {prompt.length}/500 characters
+              {prompt.length} characters
             </span>
 
             {/* Status badge */}

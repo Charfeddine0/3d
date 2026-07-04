@@ -2,7 +2,7 @@
 // Hunyuan3D v4 — API Client Library
 // ============================================================
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://your-worker.your-subdomain.workers.dev';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://your-colab.trycloudflare.com';
 
 export interface GenerateResponse {
   job_id: string;

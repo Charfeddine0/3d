@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useRef, useState, useEffect } from 'react';
+import { Suspense, useRef, useEffect } from 'react';
 import { Canvas, useLoader, useThree } from '@react-three/fiber';
 import {
   OrbitControls,
@@ -9,10 +9,9 @@ import {
   ContactShadows,
   useProgress,
   Html,
-  TransformControls,
 } from '@react-three/drei';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 // ============================================================
 // Loading overlay
@@ -124,7 +123,7 @@ function ModelDisplay({ url }: { url: string }) {
 // Scene content
 // ============================================================
 function Scene({ url }: { url: string | null }) {
-  const { camera } useThree();
+  const { camera } = useThree();
 
   useEffect(() => {
     camera.position.set(5, 3, 7);
